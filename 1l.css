@@ -1,0 +1,21 @@
+#myVideo {
+	margin-left: auto;
+ 	margin-right: auto;
+ 	display: block;
+}
+.buttons{
+	width: 50%;
+	margin:0 auto;
+}	
+#play{
+	width: 100px;
+  	height: 40px;
+	color:LightSeaGreen;
+	background-color:PapayaWhip;
+	border: 1px solid black;
+}
+#pause{
+	width: 100px;
+  	height: 40px;
+	background-color:LightCyan;
+}
