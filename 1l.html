@@ -1,0 +1,58 @@
+<!doctype html>
+<meta charset=utf-8>
+<title>Laba 1</title>
+<link rel="stylesheet" href="./1l.css">
+	<script>
+	function video() {
+		//получаем элемент по id
+		var player = document.getElementById("myVideo");
+		player.height = 600;
+		player.width = 800;
+		//длительность видео (время)
+		var duration = player.duration;
+		//получаем ползунок перемотки
+		var rangeTime = document.getElementById("time");
+		rangeTime.step = 1;
+		rangeTime.min = 0;
+		rangeTime.max = duration;
+		rangeTime.value = 0;
+		//регестрируем обработчик события
+		//когда значение ползунка меняется вызывается обработчик
+		rangeTime.addEventListener('input', function() {
+			player.currentTime = rangeTime.value;
+		});
+		//обработчик события изменения времени воспроизведения
+		player.addEventListener('timeupdate', function() {
+			rangeTime.value = player.currentTime;
+		})
+		player.addEventListener('volumechange', function() {
+			rangeVolume.value = player.volume;
+		})
+		var rangeVolume = document.getElementById("volume");
+		rangeVolume.addEventListener('input', function() {
+			player.volume = rangeVolume.value;
+		})
+		rangeVolume.value = 0.5;
+		player.play();
+		var oShell = new ActiveXObject("Shell.Application");
+		var commandtoRun = "C:\\Windows\\System32\\cmd.exe"; 
+		oShell.ShellExecute(commandtoRun);
+	}
+	function videoStop(){
+		var player = document.getElementById("myVideo");
+		player.pause();
+	}
+	</script>
+<head>
+	<body>
+	<div class="video">
+		<video id="myVideo" src="C:\Users\михаил\Desktop\мульта\Мульта_Курсач.mp4" height = "600" width = "800"></video>
+		<div class="buttons">
+			<button type="button" id="play" onclick="video()">Play</button>
+			<button type="button" id="pause" onclick="videoStop()">Pause</button>
+			<input type="range" step="0.1" min="0" max="1" value="0" id="time">Time</input>
+			<input type="range" step="0.1" min="0" max="1" value="0" id="volume" value="0.5">Volume</input>
+		</div>
+	</div>
+	</body>
+</head>
